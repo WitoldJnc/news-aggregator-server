@@ -10,4 +10,8 @@ public interface NewsService {
     List<News> getNewsList();
 
     List<String> getCatigories();
+
+    List<String> getResources();
+
+    News getNewsByResource(String resource);
 }

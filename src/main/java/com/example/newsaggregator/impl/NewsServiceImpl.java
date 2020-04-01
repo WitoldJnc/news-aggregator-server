@@ -49,4 +49,22 @@ public class NewsServiceImpl implements NewsService {
                 .collect(Collectors.toList());
 
     }
+
+    @Override
+    public List<String> getResources() {
+        return getNewsList().stream()
+                .map(News::getResource)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public News getNewsByResource(String resource) {
+        News news = null;
+        for(News n : getNewsList()){
+            if(n.getResource().equals(resource)) {
+                news = n;
+            }
+        }
+        return news;
+    }
 }
