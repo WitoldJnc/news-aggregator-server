@@ -12,6 +12,7 @@ import java.util.List;
 public class NewsItem {
     private String title;
     private String pubDate;
+    private String link;
     private String guid;
     private String description;
     private String content;

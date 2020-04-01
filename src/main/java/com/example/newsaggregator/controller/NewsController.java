@@ -1,36 +1,36 @@
 package com.example.newsaggregator.controller;
 
 import com.example.newsaggregator.model.News;
-import com.example.newsaggregator.model.NewsComponent;
-import com.google.gson.Gson;
-import lombok.val;
+import com.example.newsaggregator.service.NewsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/")
 public class NewsController {
+    @Autowired
+    private NewsService newsService;
 
     @GetMapping("/rss")
-    public List<News> getList() {
-        final RestTemplate restTemplate = new RestTemplate();
-        final String externalApi = "https://api.rss2json.com/v1/api.json?rss_url=";
-        String rssUrl = "https://lenta.ru/rss";
-
-        val news = restTemplate.getForEntity(externalApi + rssUrl, String.class);
-        final String newsBody = news.getBody();
-        NewsComponent news1 = new Gson().fromJson(newsBody, NewsComponent.class);
-
-        List<News> newsLists = new ArrayList<>();
-        News list = new News();
-        list.setNews(news1);
-        list.setResource(news1.getFeed().getTitle());
-        newsLists.add(list);
-
-        return newsLists;
-
+    public ResponseEntity<List<News>> getList() {
+        try {
+            return new ResponseEntity<>(newsService.getNewsList(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
+
+    @GetMapping("/catigories")
+    public ResponseEntity<List<String>> getCatigories() {
+
+        return new ResponseEntity<>(newsService.getCatigories(), HttpStatus.OK);
+    }
+
+
 }
