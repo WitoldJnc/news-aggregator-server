@@ -25,8 +25,9 @@ public enum Rss {
 
     public static List<Rss> getAll() {
         return Arrays.asList(
-                YANDEX_COVVID, YANDEX_MAIN, YANDEX_WORLD, YADEX_INTERNET,
-                RAMBLER_WORLD, TASS, RIA, LENTA, VESTI
+//                YANDEX_COVVID, YANDEX_MAIN, YANDEX_WORLD, YADEX_INTERNET,
+//                RAMBLER_WORLD, TASS, RIA,
+                LENTA, VESTI
         );
     }
 
