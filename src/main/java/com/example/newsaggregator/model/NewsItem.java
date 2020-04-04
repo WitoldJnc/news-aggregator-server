@@ -16,5 +16,6 @@ public class NewsItem {
     private String guid;
     private String description;
     private String content;
+    private Enclosure enclosure;
     private List<String> categories;
 }
