@@ -1,10 +1,7 @@
-package com.example.newsaggregator.controller;
+package com.example.newsaggregator.v1.controller;
 
-import com.example.newsaggregator.model.News;
-import com.example.newsaggregator.model.NewsComponent;
-import com.example.newsaggregator.model.NewsFeed;
-import com.example.newsaggregator.model.NewsItem;
-import com.example.newsaggregator.service.NewsService;
+import com.example.newsaggregator.v1.model.News;
+import com.example.newsaggregator.v1.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/")

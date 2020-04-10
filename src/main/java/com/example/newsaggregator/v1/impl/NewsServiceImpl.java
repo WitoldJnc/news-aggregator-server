@@ -1,16 +1,15 @@
-package com.example.newsaggregator.impl;
+package com.example.newsaggregator.v1.impl;
 
-import com.example.newsaggregator.model.News;
-import com.example.newsaggregator.model.NewsComponent;
-import com.example.newsaggregator.model.NewsItem;
-import com.example.newsaggregator.model.Rss;
-import com.example.newsaggregator.service.NewsService;
+import com.example.newsaggregator.v1.model.News;
+import com.example.newsaggregator.v1.model.NewsComponent;
+import com.example.newsaggregator.v1.model.NewsItem;
+import com.example.newsaggregator.v1.model.Rss;
+import com.example.newsaggregator.v1.service.NewsService;
 import com.google.gson.Gson;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

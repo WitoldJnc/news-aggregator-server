@@ -1,4 +1,4 @@
-package com.example.newsaggregator.model;
+package com.example.newsaggregator.v1.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

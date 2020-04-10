@@ -1,7 +1,7 @@
-package com.example.newsaggregator.service;
+package com.example.newsaggregator.v1.service;
 
 
-import com.example.newsaggregator.model.News;
+import com.example.newsaggregator.v1.model.News;
 
 import java.util.List;
 
