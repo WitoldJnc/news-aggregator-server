@@ -1,6 +1,8 @@
 api:
  -key: 2mejrqhkaqehihxju9q10zlerioxw3opdpliayaz
-
+rss:
+  api:
+    -url: https://rss-2-json-api.herokuapp.com/api/v1/url?url=
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
