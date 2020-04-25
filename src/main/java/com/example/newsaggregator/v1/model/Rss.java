@@ -18,7 +18,10 @@ public enum Rss {
     YADEX_INTERNET("yandex internet", "https://news.yandex.ru/internet.rss"),
     RAMBLER_WORLD("rambler in world", "https://news.rambler.ru/rss/world/"),
     TASS("tass.ru", "http://tass.ru/rss/v2.xml"),
-    RIA("ria-ru", "https://ria.ru/export/rss2/index.xml");
+    RIA("ria-ru", "https://ria.ru/export/rss2/index.xml"),
+    WOMANS_RU_FORUM("woomans.ru", "http://www.woman.ru/forum/rss/"),
+    GOROSKOP_FOR_DASHA("ГОРОСКОПИКИ НА НЕДЕЛЬКУ", "https://hyrax.ru/week/week.rss"),
+    MORE_GOROSKOPS("Гороскоп тельца", "http://horo.tochka.net/rss/horoscopes/day/taurus/");
 
     private String resource;
     private String url;
@@ -29,7 +32,8 @@ public enum Rss {
                 RAMBLER_WORLD, RIA,
                 LENTA,
                 VESTI,
-                TASS
+                TASS,
+                WOMANS_RU_FORUM, GOROSKOP_FOR_DASHA, MORE_GOROSKOPS
         );
     }
 
