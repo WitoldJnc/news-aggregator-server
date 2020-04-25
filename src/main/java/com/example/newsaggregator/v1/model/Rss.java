@@ -20,7 +20,6 @@ public enum Rss {
     TASS("tass.ru", "http://tass.ru/rss/v2.xml"),
     RIA("ria-ru", "https://ria.ru/export/rss2/index.xml"),
     WOMANS_RU_FORUM("woomans.ru", "http://www.woman.ru/forum/rss/"),
-    GOROSKOP_FOR_DASHA("ГОРОСКОПИКИ НА НЕДЕЛЬКУ", "https://hyrax.ru/week/week.rss"),
     MORE_GOROSKOPS("Гороскоп тельца", "http://horo.tochka.net/rss/horoscopes/day/taurus/");
 
     private String resource;
@@ -33,7 +32,7 @@ public enum Rss {
                 LENTA,
                 VESTI,
                 TASS,
-                WOMANS_RU_FORUM, GOROSKOP_FOR_DASHA, MORE_GOROSKOPS
+                WOMANS_RU_FORUM, MORE_GOROSKOPS
         );
     }
 
