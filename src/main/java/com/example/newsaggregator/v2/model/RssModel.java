@@ -1,6 +1,5 @@
 package com.example.newsaggregator.v2.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,19 +13,19 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name = "scrum_rss")
+@Table(name = "scrum_rss_channel")
 public class RssModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-
+    String description;
     String linkToResource;
     String linkToRss;
-    String name;
+    Boolean isParent = false;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_id", nullable = true)
-    RssParent parent;
+    RssModel parent;
 
 }

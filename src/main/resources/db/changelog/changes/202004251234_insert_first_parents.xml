@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+<!--    <changeSet id="202004251234_insert_first_parents" author="tivanov.anton" dbms="postgresql">-->
+<!--        <preConditions onFail="MARK_RAN">-->
+<!--            <tableExists tableName="scrum_rss_channel" schemaName="public"/>-->
+<!--            <sqlCheck expectedResult="0">-->
+<!--                select count(*) from public.scrum_rss_channel where is_parent is null and parent_id is null-->
+<!--            </sqlCheck>-->
+<!--        </preConditions>-->
+<!--        <sql>-->
+<!--            insert into public.scrum_rss_channel-->
+<!--            (link_to_resource, link_to_rss, description, isparent, parent_id)-->
+<!--            values('', '', '', false, 0);-->
+
+<!--        </sql>-->
+<!--    </changeSet>-->
+
+
+</databaseChangeLog>
