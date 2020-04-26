@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application.yml")
 public class NewsServiceImpl implements NewsService {
 
     @Autowired
