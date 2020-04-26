@@ -5,17 +5,17 @@ rss:
     -url: https://rss-2-json-api.herokuapp.com/api/v1/url?url=
 spring:
   datasource:
-    url: ${JDBC_DATABASE_URL}
-    username: ${JDBC_DATABSE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${JDBC_DATABSE_USERNAME:postgres}
+    password: ${JDBC_DATABASE_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
   jpa:
     show-sql: false
     hibernate:
-            ddl-auto: ${DDL_AUTO}
+            ddl-auto: ${DDL_AUTO:none}
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   liquibase:
-    enabled: ${DB_UPDATE}
+    enabled: ${DB_UPDATE:true}
     change-log: classpath:db/changelog/db.changelog-master.xml
