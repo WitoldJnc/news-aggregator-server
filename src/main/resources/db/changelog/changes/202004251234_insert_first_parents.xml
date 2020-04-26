@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="202004251234_insert_first_parents" author="tivanov.anton" dbms="postgresql">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="scrum_rss_channel" schemaName="public"/>
+            <sqlCheck expectedResult="0">
+                select count(*) from public.scrum_rss_channel where is_parent is true and parent_id is null
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            insert into public.scrum_rss_channel
+            (link_to_resource, description, is_parent) values
+            ('https://www.adme.ru/', 'AdMe', true),
+            ('https://arzamas.academy/', 'Arzamas', true),
+            ('https://www.bbc.com/', 'BBC', true);
+        </sql>
+    </changeSet>
+
+    <changeSet id="202004251235_insert_rss_channels" author="tivanov.anton" dbms="postgresql">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="scrum_rss_channel" schemaName="public"/>
+            <sqlCheck expectedResult="0">
+                select count(*) from public.scrum_rss_channel where is_parent is false and parent_id is null
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            insert into  public.scrum_rss_channel
+            (link_to_resource, link_to_rss, description, parent_id) values
+            ('https://www.adme.ru/', 'https://www.adme.ru/rss/', 'AdMe: Сайт о творчестве', (select id from scrum_rss_channel where description ilike 'AdMe' and is_parent)),
+            ('https://arzamas.academy/', 'https://arzamas.academy/feed_v1.rss', 'Arzamas: Всё', (select id from scrum_rss_channel where description ilike 'arzamas' and is_parent)),
+            ('https://arzamas.academy/', 'https://arzamas.academy/feed_v1/mag.rss', 'Arzamas: Журнал', (select id from scrum_rss_channel where description ilike 'arzamas' and is_parent)),
+            ('https://arzamas.academy/', 'https://arzamas.academy/feed_v1/courses.rss', 'Arzamas: Курсы', (select id from scrum_rss_channel where description ilike 'arzamas' and is_parent)),
+            ('https://www.bbc.com/', 'http://feeds.bbci.co.uk/russian/rss.xml', 'BBCRussian.com | Главная', (select id from scrum_rss_channel where description ilike 'bbc' and is_parent));
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>
