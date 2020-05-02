@@ -105,7 +105,6 @@
             ('https://lifehacker.ru/feed/', 'Lifehacker.ru', (select id from scrum_rss_channel where description ilike 'Lifehacker.ru' and is_parent)),
 
             ('https://meduza.io/rss/news', 'Meduza.io Новости', (select id from scrum_rss_channel where description ilike 'Meduza' and is_parent)),
-            ('https://meduza.io/rss/news', 'Meduza.io Новости', (select id from scrum_rss_channel where description ilike 'Meduza' and is_parent)),
 
             ('https://nplus1.ru/rss', 'N+1: научные статьи, новости, открытия', (select id from scrum_rss_channel where description ilike 'N+1' and is_parent)),
 

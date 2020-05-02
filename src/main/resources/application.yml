@@ -17,5 +17,11 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   liquibase:
-    enabled: ${DB_UPDATE:true}
+    enabled: ${DB_UPDATE:false}
     change-log: classpath:db/changelog/db.changelog-master.xml
+
+vk:
+  api:
+    -key: ${VK_API_KEY:bec74ebfbec74ebfbec74ebf5abeb6c56ebbec7bec74ebfe06dd4db07ed0e6b0634a9db}
+    -user: ${VK_API_USER:95824750}
+    -post-count: ${VK_API_POST_COUNT:15}
