@@ -3,25 +3,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
-    <modules>
-        <module>news-aggregator-api</module>
-        <module>news-aggregator-web</module>
-        <module>news-aggregator-impl</module>
-    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <module.version>0.0.1-SNAPSHOT</module.version>
+    </properties>
+
+    <groupId>com.newsaggregator</groupId>
+    <artifactId>news-aggregator</artifactId>
+    <version>${module.version}</version>
+    <name>news-aggregator</name>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.6.RELEASE</version>
         <relativePath/>
     </parent>
-    <groupId>com.newsaggregator</groupId>
-    <artifactId>news-aggregator</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>news-aggregator</name>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
+    <modules>
+        <module>news-aggregator-api</module>
+        <module>news-aggregator-web</module>
+        <module>news-aggregator-impl</module>
+    </modules>
 
     <dependencies>
 

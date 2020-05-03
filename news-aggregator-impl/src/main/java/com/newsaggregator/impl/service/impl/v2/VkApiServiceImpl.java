@@ -1,6 +1,7 @@
 package com.newsaggregator.impl.service.impl.v2;
 
-import com.newsaggregator.api.service.v2.VkApiService;
+import com.newsaggregator.api.dto.v2.rss.Rss;
+import com.newsaggregator.api.service.v2.vk.VkApiService;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
@@ -12,6 +13,7 @@ import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,13 +23,16 @@ public class VkApiServiceImpl implements VkApiService {
     @Autowired
     private Environment env;
 
+    //todo transform to pojo
     @Override
-    public void get(String groupName) {
+    public ResponseEntity<Rss> get(String groupUrl) {
         val vk = new VkApiClient(HttpTransportClient.getInstance());
         final val userActor = initUserActor();
-        Integer groupId = getGroupIdByName(groupName, vk, userActor);
+        Integer groupId = getGroupIdByName(groupUrl, vk, userActor);
         GetResponse recordsFromPublic = getRecordsFromPublic(groupId, vk, userActor);
 
+
+        return null;
     }
 
     @Override
