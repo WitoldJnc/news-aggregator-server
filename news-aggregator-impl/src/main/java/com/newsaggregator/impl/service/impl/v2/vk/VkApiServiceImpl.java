@@ -1,7 +1,9 @@
-package com.newsaggregator.impl.service.impl.v2;
+package com.newsaggregator.impl.service.impl.v2.vk;
+
 
 import com.newsaggregator.api.dto.v2.rss.Rss;
 import com.newsaggregator.api.service.v2.vk.VkApiService;
+import com.newsaggregator.api.service.v2.vk.VkTransferService;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
@@ -23,6 +25,9 @@ public class VkApiServiceImpl implements VkApiService {
     @Autowired
     private Environment env;
 
+    @Autowired
+    private VkTransferService transferService;
+
     //todo transform to pojo
     @Override
     public ResponseEntity<Rss> get(String groupUrl) {
@@ -31,7 +36,7 @@ public class VkApiServiceImpl implements VkApiService {
         Integer groupId = getGroupIdByName(groupUrl, vk, userActor);
         GetResponse recordsFromPublic = getRecordsFromPublic(groupId, vk, userActor);
 
-
+        transferService.transferToFeed(recordsFromPublic.getItems());
         return null;
     }
 
