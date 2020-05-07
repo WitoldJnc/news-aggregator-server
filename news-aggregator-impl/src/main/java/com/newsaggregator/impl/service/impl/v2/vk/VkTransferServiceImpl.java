@@ -9,6 +9,7 @@ import com.newsaggregator.api.service.v2.RssChannelRepoCustom;
 import com.newsaggregator.api.service.v2.vk.VkTransferService;
 import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.photos.Photo;
+import com.vk.api.sdk.objects.video.Video;
 import com.vk.api.sdk.objects.wall.WallPostFull;
 import com.vk.api.sdk.objects.wall.WallpostAttachmentType;
 import lombok.val;
@@ -19,11 +20,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
-
 public class VkTransferServiceImpl implements VkTransferService {
 
     @Autowired
@@ -43,6 +45,10 @@ public class VkTransferServiceImpl implements VkTransferService {
 
         if (item.getAttachments().get(0).getType().equals(WallpostAttachmentType.PHOTO)) {
             rssItem = extractPhotoItem(item);
+        }
+
+        if (item.getAttachments().get(0).getType().equals(WallpostAttachmentType.VIDEO)) {
+            rssItem = extractVideoItem(item);
         }
         return rssItem;
     }
@@ -101,6 +107,21 @@ public class VkTransferServiceImpl implements VkTransferService {
                 .build();
     }
 
+    private Item extractVideoItem(WallPostFull item) {
+        final Video video = item.getAttachments().get(0).getVideo();
+        final String preview = Stream.of(video.getPhoto800(), video.getPhoto320(), video.getPhoto130())
+                .filter(Objects::nonNull)
+                .findFirst().orElse("");
+        return Item.builder()
+                .guid(item.getId().toString())
+                .pubDate(new Date(item.getDate()).toString())
+                .title(video.getTitle())
+                .description(video.getDescription())
+                .enclosure(Stream.of(preview).collect(Collectors.toList()))
+                .link(getYouTubeUrl(video))
+                .build();
+    }
+
     @Override
     public List<String> getEnclosure(WallPostFull item) {
         List<String> enclosure = new ArrayList<>();
@@ -117,5 +138,18 @@ public class VkTransferServiceImpl implements VkTransferService {
                 photo.getPhoto604(), photo.getPhoto130())
                 .filter(Objects::nonNull)
                 .findFirst().orElse("");
+    }
+
+    @Override
+    public String getYouTubeUrl(Video video) {
+        String link = "";
+        if (video.getDescription().contains("youtube") || video.getDescription().contains("youtu.be")) {
+            Pattern regex = Pattern.compile("((http(s)?:\\/\\/)?)(www\\.)?((youtube\\.com\\/)|(youtu.be\\/))[\\S]+");
+            Matcher matcher = regex.matcher(video.getDescription());
+            if (matcher.find()) {
+                link = matcher.group();
+            }
+        }
+        return link;
     }
 }

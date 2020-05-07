@@ -4,6 +4,7 @@ import com.newsaggregator.api.dto.v2.rss.Feed;
 import com.newsaggregator.api.dto.v2.rss.Item;
 import com.newsaggregator.api.dto.v2.rss.Rss;
 import com.vk.api.sdk.objects.photos.Photo;
+import com.vk.api.sdk.objects.video.Video;
 import com.vk.api.sdk.objects.wall.WallPostFull;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface VkTransferService {
     List<String> getEnclosure(WallPostFull item);
 
     String getPhoto(Photo photo);
+
+    String getYouTubeUrl(Video video);
 }
