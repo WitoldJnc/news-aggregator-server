@@ -112,6 +112,7 @@ public class VkTransferServiceImpl implements VkTransferService {
         final String preview = Stream.of(video.getPhoto800(), video.getPhoto320(), video.getPhoto130())
                 .filter(Objects::nonNull)
                 .findFirst().orElse("");
+
         return Item.builder()
                 .guid(item.getId().toString())
                 .pubDate(new Date(item.getDate()).toString())

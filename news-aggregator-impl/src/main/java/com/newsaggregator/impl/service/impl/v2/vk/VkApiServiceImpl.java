@@ -30,14 +30,19 @@ public class VkApiServiceImpl implements VkApiService {
 
     @Override
     public ResponseEntity<Rss> getVkFeed(String groupUrl) {
-        val vk = new VkApiClient(HttpTransportClient.getInstance());
-        final val userActor = initUserActor();
-        Integer groupId = getGroupIdByName(groupUrl, vk, userActor);
-        GetResponse vkResponse = getRecordsFromPublic(groupId, vk, userActor);
+        try {
+            val vk = new VkApiClient(HttpTransportClient.getInstance());
+            final val userActor = initUserActor();
+            Integer groupId = getGroupIdByName(groupUrl, vk, userActor);
+            GetResponse vkResponse = getRecordsFromPublic(groupId, vk, userActor);
 
-        Rss rss = transferService.transferToFeed(vkResponse.getItems(), groupUrl);
+            Rss rss = transferService.transferToFeed(vkResponse.getItems(), groupUrl);
 
-        return ResponseEntity.ok().body(rss);
+            return ResponseEntity.ok().body(rss);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new Rss());
+        }
+
     }
 
     @Override
