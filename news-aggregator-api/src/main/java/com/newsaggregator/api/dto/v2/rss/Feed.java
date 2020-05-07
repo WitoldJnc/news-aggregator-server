@@ -1,12 +1,14 @@
 package com.newsaggregator.api.dto.v2.rss;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Feed {
     private String language;
     private String title;

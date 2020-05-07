@@ -9,4 +9,6 @@ public interface RssChannelRepoCustom {
     List<RssChannelDTO> getAllRss();
 
     List<RssChannel> getChannelsByParent(Integer parentId);
+
+    RssChannel getResourseByUrl(String url);
 }

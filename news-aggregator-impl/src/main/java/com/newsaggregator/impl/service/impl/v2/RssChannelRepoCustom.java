@@ -46,4 +46,12 @@ public class RssChannelRepoCustom implements com.newsaggregator.api.service.v2.R
                 .setParameter("id", parentId)
                 .getResultList();
     }
+
+    @Override
+    public RssChannel getResourseByUrl(String url) {
+        return (RssChannel) entityManager.createNativeQuery("select * from scrum_rss_channel " +
+                "where link_to_rss = :link", RssChannel.class)
+                .setParameter("link", url)
+                .getSingleResult();
+    }
 }

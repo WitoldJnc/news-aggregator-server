@@ -28,16 +28,16 @@ public class VkApiServiceImpl implements VkApiService {
     @Autowired
     private VkTransferService transferService;
 
-    //todo transform to pojo
     @Override
-    public ResponseEntity<Rss> get(String groupUrl) {
+    public ResponseEntity<Rss> getVkFeed(String groupUrl) {
         val vk = new VkApiClient(HttpTransportClient.getInstance());
         final val userActor = initUserActor();
         Integer groupId = getGroupIdByName(groupUrl, vk, userActor);
-        GetResponse recordsFromPublic = getRecordsFromPublic(groupId, vk, userActor);
+        GetResponse vkResponse = getRecordsFromPublic(groupId, vk, userActor);
 
-        transferService.transferToFeed(recordsFromPublic.getItems());
-        return null;
+        Rss rss = transferService.transferToFeed(vkResponse.getItems(), groupUrl);
+
+        return ResponseEntity.ok().body(rss);
     }
 
     @Override
@@ -53,6 +53,7 @@ public class VkApiServiceImpl implements VkApiService {
         }
     }
 
+    @Override
     public GetResponse getRecordsFromPublic(Integer groupid, VkApiClient vk, UserActor userActor) {
         try {
             return vk.wall().get(userActor)
@@ -65,6 +66,7 @@ public class VkApiServiceImpl implements VkApiService {
         }
     }
 
+    @Override
     public UserActor initUserActor() {
         return new UserActor(Integer.parseInt(env.getProperty("vk.api.user")), env.getProperty("vk.api.key"));
     }

@@ -36,18 +36,12 @@ public class RssController {
                 .body(channelRepoCustom.getAllRss());
     }
 
-    @GetMapping("/vk")
-    public void getVk() {
-        vkApiService.get("https://vk.com/ru2ch");
-    }
-
 
     @GetMapping("/rss")
     public ResponseEntity<Rss> geByRssUrl(@RequestParam("url") String url){
         return url.contains("vk.com")
-                ? vkApiService.get(url)
+                ? vkApiService.getVkFeed(url)
                 : rssToJsonService.getRssAsPojo(url);
-
 
     }
 }
