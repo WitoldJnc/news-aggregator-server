@@ -34,6 +34,7 @@
             ('https://www.labirint.ru/', 'Лабиринт. Книжный магазин', true, (select id from scrum_rss_category where code = 'BOOKS')),
             ('https://ideanomics.ru/', 'Идеономика', true, (select id from scrum_rss_category where code = 'EDU')),
             ('https://disgustingmen.com/', 'DISGUSTING MEN Отвратительные мужики', true, (select id from scrum_rss_category where code = 'ALL')),
+            ('https://tjournal.ru/', 'Tjournal Новости интернета', true, (select id from scrum_rss_category where code = 'ALL')),
             ('https://diletant.media/', 'Дилетант', true, (select id from scrum_rss_category where code = 'ALL'));
 
         </sql>
@@ -112,25 +113,47 @@
             ('https://newochem.io/philosophy/rss', 'Философия', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
             ('https://newochem.io/history/rss', 'История', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'HISTORY')),
             ('https://newochem.io/psychology/rss', 'Психология', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'PSY')),
-            ('https://newochem.io/sex/rss', 'Секс', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'HEALTH')),
+            ('https://newochem.io/sex/rss', 'Секс', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'SEX')),
             ('https://newochem.io/science/rss', 'Наука', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'SCIENCE')),
             ('https://podster.fm/rss.xml?pid=48291', 'Подкаст', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'PODCAST')),
             ('http://feeds.feedburner.com/labirint_reviews', 'Новости, обзоры', (select id from scrum_rss_channel where description ilike 'Лабиринт. Книжный магазин' and is_parent), (select id from scrum_rss_category where code = 'BOOKS')),
             ('http://feeds.feedburner.com/labirint_books', 'Книги', (select id from scrum_rss_channel where description ilike 'Лабиринт. Книжный магазин' and is_parent), (select id from scrum_rss_category where code = 'BOOKS')),
             ('https://ideanomics.ru/feed', 'Идеономика – Умные о главном', (select id from scrum_rss_channel where description ilike 'Ижеономика' and is_parent), (select id from scrum_rss_category where code = 'EDU')),
             ('https://diletant.media/rss/news/', 'Новости', (select id from scrum_rss_channel where description ilike 'Дилетант' and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
-            ('https://diletant.media/rss/tests/', 'Тесты', (select id from scrum_rss_channel where description ilike 'Дилетант' and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
+            ('https://diletant.media/rss/tests/', 'Тесты', (select id from scrum_rss_channel where description ilike 'Дилетант' and is_parent), (select id from scrum_rss_category where code = 'TEST')),
             ('https://diletant.media/rss/articles/', 'Статьи', (select id from scrum_rss_channel where description ilike 'Дилетант' and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
 
             ('https://disgustingmen.com/feed/', 'Отвратительные мужки - Главная', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
-            ('https://disgustingmen.com/tag/dich/feed', 'Отвратительные мужки - Дичь', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
-            ('https://disgustingmen.com/tag/testyi/feed/', 'Отвратительные мужки - Тесты', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
-            ('https://disgustingmen.com/category/music/feed/', 'Отвратительные мужки - Музыка', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'MUSIC')),
-            ('https://disgustingmen.com/tag/knigi/feed/', 'Отвратительные мужки - Книги', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'BOOKS')),
-            ('https://disgustingmen.com/category/kino/feed/', 'Отвратительные мужки - Кино', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'CINEMA')),
-            ('https://disgustingmen.com/category/games/feed', 'Отвратительные мужки - Игры', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'GAMES')),
-            ('https://disgustingmen.com/category/history/feed', 'Отвратительные мужки - История', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'HISTORY')),
-            ('https://disgustingmen.com/category/podkasts/feed', 'Отвратительные мужки - История', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'PODCAST'));
+            ('https://disgustingmen.com/tag/dich/feed', 'Отвратительные мужики - Дичь', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
+            ('https://disgustingmen.com/tag/testyi/feed/', 'Отвратительные мужики - Тесты', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'TEST')),
+            ('https://disgustingmen.com/category/music/feed/', 'Отвратительные мужики - Музыка', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'MUSIC')),
+            ('https://disgustingmen.com/tag/knigi/feed/', 'Отвратительные мужики - Книги', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'BOOKS')),
+            ('https://disgustingmen.com/category/kino/feed/', 'Отвратительные мужики - Кино', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'CINEMA')),
+            ('https://disgustingmen.com/category/games/feed', 'Отвратительные мужики - Игры', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'GAMES')),
+            ('https://disgustingmen.com/category/history/feed', 'Отвратительные мужики - История', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'HISTORY')),
+            ('https://disgustingmen.com/category/podkasts/feed', 'Отвратительные мужики - История', (select id from scrum_rss_channel where description ilike '%DISGUSTING%' and is_parent), (select id from scrum_rss_category where code = 'PODCAST')),
+
+
+            ('https://tjournal.ru/rss', 'Tjournal - Популярное', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
+            ('https://tjournal.ru/rss/flood', 'Tjournal - Офтоп', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
+            ('https://tjournal.ru/rss/team', 'Tjournal - Свежее', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
+            ('https://tjournal.ru/rss/tech', 'Tjournal - Технологии', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'TECH')),
+            ('https://tjournal.ru/rss/science', 'Tjournal - Наука', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'SCIENCE')),
+            ('https://tjournal.ru/rss/internet', 'Tjournal - Интернет', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'INTERNET')),
+            ('https://tjournal.ru/rss/stories', 'Tjournal - Истории', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'HISTORY')),
+            ('https://tjournal.ru/rss/travel', 'Tjournal - Путешествия', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'TRAVEL')),
+            ('https://tjournal.ru/rss/art', 'Tjournal - Дизайн', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'ART')),
+            ('https://tjournal.ru/rss/ask', 'Tjournal - Вопросы', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
+            ('https://tjournal.ru/rss/animals', 'Tjournal - Животные', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'ANIMALS')),
+            ('https://tjournal.ru/rss/tv', 'Tjournal - Кино и сериалы', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'CINEMA')),
+            ('https://tjournal.ru/rss/music', 'Tjournal - Музыка', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'MUSIC')),
+            ('https://tjournal.ru/rss/photo', 'Tjournal - Фото', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'ART')),
+            ('https://tjournal.ru/rss/podcasts', 'Tjournal - Подкасты', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'PODCAST')),
+            ('https://tjournal.ru/rss/sex', 'Tjournal - Секс и отношения', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'SEX')),
+            ('https://tjournal.ru/rss/dev', 'Tjournal - Разработка', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), NULL),
+            ('https://tjournal.ru/rss/alko', 'Tjournal - Алкоголь', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'FOOD')),
+            ('https://tjournal.ru/rss/kitchen', 'Tjournal - Кухня', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'FOOD')),
+            ('https://tjournal.ru/rss/testtime', 'Tjournal - Тесты', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'TEST'));
 
         </sql>
     </changeSet>

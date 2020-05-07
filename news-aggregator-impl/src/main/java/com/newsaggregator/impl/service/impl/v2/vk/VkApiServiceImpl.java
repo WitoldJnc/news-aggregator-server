@@ -47,8 +47,8 @@ public class VkApiServiceImpl implements VkApiService {
 
     @Override
     public Integer getGroupIdByName(String groupName, VkApiClient vk, UserActor actor) {
-        if (groupName.contains("public")) {
-            return Integer.valueOf(groupName.replace("https://vk.com/public", "").trim());
+        if (groupName.contains("public") || groupName.contains("club")) {
+            return Integer.valueOf(groupName.replaceAll("https://vk.com/public|https://vk.com/club", "").trim())
         }
         groupName = groupName.replace("https://vk.com/", "").trim();
         try {

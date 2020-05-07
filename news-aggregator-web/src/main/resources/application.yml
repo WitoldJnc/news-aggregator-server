@@ -17,7 +17,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   liquibase:
-    enabled: ${DB_UPDATE:true}
+    enabled: ${DB_UPDATE:false}
     change-log: classpath:db/changelog/db.changelog-master.xml
 
 vk:
