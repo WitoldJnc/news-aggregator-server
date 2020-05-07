@@ -13,23 +13,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name = "scrum_rss_channel")
-public class RssChannel {
-
+@Table(name = "scrum_rss_category")
+public class RssCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    String description;
-    String linkToResource;
-    String linkToRss;
-    Boolean isParent = false;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id", nullable = true)
-    RssChannel parent;
-
-    @ManyToOne
-    @JoinColumn(name = "category")
-    RssCategory category;
-
+    String code;
+    String name;
 }
