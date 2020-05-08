@@ -35,8 +35,15 @@
             ('https://ideanomics.ru/', 'Идеономика', true, (select id from scrum_rss_category where code = 'EDU')),
             ('https://disgustingmen.com/', 'DISGUSTING MEN Отвратительные мужики', true, (select id from scrum_rss_category where code = 'ALL')),
             ('https://tjournal.ru/', 'Tjournal Новости интернета', true, (select id from scrum_rss_category where code = 'ALL')),
-            ('https://diletant.media/', 'Дилетант', true, (select id from scrum_rss_category where code = 'ALL'));
-
+            ('https://diletant.media/', 'Дилетант', true, (select id from scrum_rss_category where code = 'ALL')),
+            ('https://vk.com/kub_media', 'Куб Медиа', true, (select id from scrum_rss_category where code = 'NEWS')),
+            ('https://vk.com/mash', 'Mash|Мэш', true, (select id from scrum_rss_category where code = 'NEWS')),
+            ('https://vk.com/toples_show', 'ТОПЛЕС', true, (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/cyberleninka', 'КиберЛенинка', true, (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/habr', 'Habr', true, (select id from scrum_rss_category where code = 'ALL')),
+            ('https://vk.com/space_live', 'Открытый космос', true, (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/deep_space', 'Deep space', true, (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/sci_one', 'Sci_one', true, (select id from scrum_rss_category where code = 'EDU'));
         </sql>
     </changeSet>
 
@@ -56,12 +63,12 @@
             ('https://arzamas.academy/feed_v1/courses.rss', 'Arzamas: Курсы', (select id from scrum_rss_channel where description = 'Arzamas' and is_parent), (select id from scrum_rss_category where code = 'EDU')),
             ('https://arzamas.academy/feed_v1/podcast.rss', 'Arzamas: Подкасты', (select id from scrum_rss_channel where description = 'Arzamas' and is_parent), (select id from scrum_rss_category where code = 'PODCAST')),
             ('http://feeds.bbci.co.uk/news/rss.xml?edition=int', 'BBC News - Home', (select id from scrum_rss_channel where description = 'BBC' and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
-            ('http://feeds.bbci.co.uk/news/science_and_environment/rss.xml', 'BBC News - Science and Environment', (select id from scrum_rss_channel where description = 'BBC' and is_parent), (select id from scrum_rss_category where code = 'SCIENCE')),
+            ('http://feeds.bbci.co.uk/news/science_and_environment/rss.xml', 'BBC News - Science and Environment', (select id from scrum_rss_channel where description = 'BBC' and is_parent), (select id from scrum_rss_category where code = 'EDU')),
             ('http://feeds.bbci.co.uk/news/education/rss.xml', 'BBC News - Family and Education', (select id from scrum_rss_channel where description = 'BBC' and is_parent), (select id from scrum_rss_category where code = 'EDU')),
             ('http://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml', 'BBC News - Entertainment and Arts', (select id from scrum_rss_channel where description = 'BBC' and is_parent), (select id from scrum_rss_category where code = 'ART')),
             ('http://feeds.bbci.co.uk/news/health/rss.xml?edition=int', 'BBC News - Health', (select id from scrum_rss_channel where description = 'BBC' and is_parent), (select id from scrum_rss_category where code = 'HEALTH')),
             ('http://feeds.bbci.co.uk/news/uk/rss.xml', 'BBC News - UK', (select id from scrum_rss_channel where description = 'BBC' and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
-            ('http://feeds.bbci.co.uk/news/technology/rss.xml?edition=int', 'BBC News - Technology', (select id from scrum_rss_channel where description = 'BBC' and is_parent), (select id from scrum_rss_category where code = 'SCIENCE') ),
+            ('http://feeds.bbci.co.uk/news/technology/rss.xml?edition=int', 'BBC News - Technology', (select id from scrum_rss_channel where description = 'BBC' and is_parent), (select id from scrum_rss_category where code = 'EDU') ),
             ('http://feeds.bbci.co.uk/news/business/rss.xml?edition=int', '	BBC News - Business', (select id from scrum_rss_channel where description = 'BBC' and is_parent), (select id from scrum_rss_category where code = 'BUSINESS')),
             ('http://feeds.bbci.co.uk/russian/rss.xml', 'BBCRussian.com | Главная', (select id from scrum_rss_channel where description = 'BBC' and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
             ('https://images.apple.com/main/rss/hotnews/hotnews.rss', 'Apple Hot News', (select id from scrum_rss_channel where description ilike 'Apple' and is_parent), (select id from scrum_rss_category where code = 'TECH')),
@@ -92,6 +99,7 @@
             ('https://lifehacker.ru/feed/', 'Lifehacker.ru', (select id from scrum_rss_channel where description ilike 'Lifehacker.ru' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
             ('https://meduza.io/rss/news', 'Meduza.io Новости', (select id from scrum_rss_channel where description ilike 'Meduza' and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
             ('https://nplus1.ru/rss', 'N+1: научные статьи, новости, открытия', (select id from scrum_rss_channel where description ilike 'N+1' and is_parent), (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/nplusone', 'N+1 Паблик', (select id from scrum_rss_channel where description ilike 'N+1' and is_parent), (select id from scrum_rss_category where code = 'EDU')),
             ('https://www.currenttime.tv/api/zg$ip_e_tpp_', 'Новости', (select id from scrum_rss_channel where description ilike 'Настоящее время' and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
             ('https://www.currenttime.tv/api/ztktpyeimupt', 'Семь сорок', (select id from scrum_rss_channel where description ilike 'Настоящее время' and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
             ('https://www.currenttime.tv/api/zpyomoe-rimi', 'Эксклюзив', (select id from scrum_rss_channel where description ilike 'Настоящее время' and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
@@ -114,7 +122,7 @@
             ('https://newochem.io/history/rss', 'История', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'HISTORY')),
             ('https://newochem.io/psychology/rss', 'Психология', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'PSY')),
             ('https://newochem.io/sex/rss', 'Секс', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'SEX')),
-            ('https://newochem.io/science/rss', 'Наука', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'SCIENCE')),
+            ('https://newochem.io/science/rss', 'Наука', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'EDU')),
             ('https://podster.fm/rss.xml?pid=48291', 'Подкаст', (select id from scrum_rss_channel where description ilike 'Newочём - авторские переводы зарубежных изданий' and is_parent), (select id from scrum_rss_category where code = 'PODCAST')),
             ('http://feeds.feedburner.com/labirint_reviews', 'Новости, обзоры', (select id from scrum_rss_channel where description ilike 'Лабиринт. Книжный магазин' and is_parent), (select id from scrum_rss_category where code = 'BOOKS')),
             ('http://feeds.feedburner.com/labirint_books', 'Книги', (select id from scrum_rss_channel where description ilike 'Лабиринт. Книжный магазин' and is_parent), (select id from scrum_rss_category where code = 'BOOKS')),
@@ -138,7 +146,7 @@
             ('https://tjournal.ru/rss/flood', 'Tjournal - Офтоп', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
             ('https://tjournal.ru/rss/team', 'Tjournal - Свежее', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
             ('https://tjournal.ru/rss/tech', 'Tjournal - Технологии', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'TECH')),
-            ('https://tjournal.ru/rss/science', 'Tjournal - Наука', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'SCIENCE')),
+            ('https://tjournal.ru/rss/science', 'Tjournal - Наука', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'EDU')),
             ('https://tjournal.ru/rss/internet', 'Tjournal - Интернет', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'INTERNET')),
             ('https://tjournal.ru/rss/stories', 'Tjournal - Истории', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'HISTORY')),
             ('https://tjournal.ru/rss/travel', 'Tjournal - Путешествия', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'TRAVEL')),
@@ -153,8 +161,15 @@
             ('https://tjournal.ru/rss/dev', 'Tjournal - Разработка', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), NULL),
             ('https://tjournal.ru/rss/alko', 'Tjournal - Алкоголь', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'FOOD')),
             ('https://tjournal.ru/rss/kitchen', 'Tjournal - Кухня', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'FOOD')),
-            ('https://tjournal.ru/rss/testtime', 'Tjournal - Тесты', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'TEST'));
-
+            ('https://tjournal.ru/rss/testtime', 'Tjournal - Тесты', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'TEST')),
+            ('https://vk.com/kub_media', 'Куб Медиа Все грани происходящего', (select id from scrum_rss_channel where description ilike %Куб Медиа% and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
+            ('https://vk.com/mash', 'Mash|Мэш Новости, которые вы заслужили', (select id from scrum_rss_channel where description ilike %Mash|Мэш% and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
+            ('https://vk.com/toples_show', 'ТОПЛЕС Прокачай больной мозг!', (select id from scrum_rss_channel where description ilike %ТОПЛЕС% and is_parent), (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/cyberleninka', 'КиберЛенинка', (select id from scrum_rss_channel where description ilike %КиберЛенинка% and is_parent), (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/habr', 'Habr', (select id from scrum_rss_channel where description ilike %Habr% and is_parent), (select id from scrum_rss_category where code = 'ALL')),
+            ('https://vk.com/space_live', 'Открытый космос', (select id from scrum_rss_channel where description ilike %Открытый космос% and is_parent), (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/deep_space', 'Deep space', (select id from scrum_rss_channel where description ilike %Deep space% and is_parent), (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/sci_one', 'Sci_one', (select id from scrum_rss_channel where description ilike %Sci_one% and is_parent), (select id from scrum_rss_category where code = 'EDU'));
         </sql>
     </changeSet>
 

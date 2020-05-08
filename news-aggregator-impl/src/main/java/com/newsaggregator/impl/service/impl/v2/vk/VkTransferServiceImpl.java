@@ -50,6 +50,7 @@ public class VkTransferServiceImpl implements VkTransferService {
         if (item.getAttachments().get(0).getType().equals(WallpostAttachmentType.VIDEO)) {
             rssItem = extractVideoItem(item);
         }
+
         return rssItem;
     }
 
