@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="202004111849_create_category_table" author="tivanov.anton" dbms="postgresql">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="scrum_rss_category" schemaName="public"/>
+            </not>
+        </preConditions>
+        <sql>
+            create table public.scrum_rss_category (
+            id serial primary key,
+            code varchar(50) not null,
+            name varchar(100)
+            )
+        </sql>
+    </changeSet>
+
+    <changeSet id="202004111849_insert_catigories" author="tivanov.anton" dbms="postgresql">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="scrum_rss_category" schemaName="public"/>
+            <sqlCheck expectedResult="0">select count(*) from public.scrum_rss_category</sqlCheck>
+        </preConditions>
+        <sql>
+            insert into public.scrum_rss_category (code, name) values
+            ('HOBBY', 'Хобби и развлечения'),
+            ('TECH', 'Техника'),
+            ('PSY', 'Психология'),
+            ('ASTROLOGY', 'Астрология'),
+            ('NEWS', 'Новости'),
+            ('GAMES', 'Игры'),
+            ('ALL', 'Все сразу'),
+            ('HISTORY', 'История'),
+            ('PODCAST', 'Подкасты'),
+            ('ART', 'Искусство и культура'),
+            ('EDU', 'Наука и образование'),
+            ('HEALTH', 'Здоровье'),
+            ('BUSINESS', 'Бизнесс'),
+            ('TRAVEL', 'Путешествия'),
+            ('MUSIC', 'Музыка'),
+            ('BEAUTY', 'Красота и уход'),
+            ('POLIT', 'Политика (осуждаем этот выбор, уходите)'),
+            ('BOOKS', 'Книги'),
+            ('SEX', 'Секс и отношения'),
+            ('TEST', 'Тесты хахах ура тесты наканецта'),
+            ('FOOD', 'Еда и алкоголь'),
+            ('ANIMALS', 'Животные'),
+            ('INTERNET', 'Интернет'),
+            ('CINEMA', 'Фильмы');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

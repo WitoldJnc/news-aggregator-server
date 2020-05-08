@@ -1,0 +1,28 @@
+api:
+ -key: ${API_KEY_FOR_V1}
+rss:
+  api:
+    -url: https://rss-2-json-api.herokuapp.com/api/v1/url?url=
+spring:
+  datasource:
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${JDBC_DATABSE_USERNAME:postgres}
+    password: ${JDBC_DATABASE_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: false
+    hibernate:
+            ddl-auto: ${DDL_AUTO:none}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    enabled: ${DB_UPDATE:false}
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+vk:
+  api:
+    -key: ${VK_API_KEY:bec74ebfbec74ebfbec74ebf5abeb6c56ebbec7bec74ebfe06dd4db07ed0e6b0634a9db}
+    -user-key: ${VK_API_USER_KEY:d086c385f9857105c86163abeaa40c341a8e595c68e510c75927cbe7f01a234710cc1d277abff160347ad}
+    -user: ${VK_API_USER:95824750}
+    -post-count: ${VK_API_POST_COUNT:15}
