@@ -162,14 +162,14 @@
             ('https://tjournal.ru/rss/alko', 'Tjournal - Алкоголь', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'FOOD')),
             ('https://tjournal.ru/rss/kitchen', 'Tjournal - Кухня', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'FOOD')),
             ('https://tjournal.ru/rss/testtime', 'Tjournal - Тесты', (select id from scrum_rss_channel where description ilike '%tjournal%' and is_parent), (select id from scrum_rss_category where code = 'TEST')),
-            ('https://vk.com/kub_media', 'Куб Медиа Все грани происходящего', (select id from scrum_rss_channel where description ilike %Куб Медиа% and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
-            ('https://vk.com/mash', 'Mash|Мэш Новости, которые вы заслужили', (select id from scrum_rss_channel where description ilike %Mash|Мэш% and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
-            ('https://vk.com/toples_show', 'ТОПЛЕС Прокачай больной мозг!', (select id from scrum_rss_channel where description ilike %ТОПЛЕС% and is_parent), (select id from scrum_rss_category where code = 'EDU')),
-            ('https://vk.com/cyberleninka', 'КиберЛенинка', (select id from scrum_rss_channel where description ilike %КиберЛенинка% and is_parent), (select id from scrum_rss_category where code = 'EDU')),
-            ('https://vk.com/habr', 'Habr', (select id from scrum_rss_channel where description ilike %Habr% and is_parent), (select id from scrum_rss_category where code = 'ALL')),
-            ('https://vk.com/space_live', 'Открытый космос', (select id from scrum_rss_channel where description ilike %Открытый космос% and is_parent), (select id from scrum_rss_category where code = 'EDU')),
-            ('https://vk.com/deep_space', 'Deep space', (select id from scrum_rss_channel where description ilike %Deep space% and is_parent), (select id from scrum_rss_category where code = 'EDU')),
-            ('https://vk.com/sci_one', 'Sci_one', (select id from scrum_rss_channel where description ilike %Sci_one% and is_parent), (select id from scrum_rss_category where code = 'EDU'));
+            ('https://vk.com/kub_media', 'Куб Медиа Все грани происходящего', (select id from scrum_rss_channel where description ilike '%Куб Медиа%' and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
+            ('https://vk.com/mash', 'Mash|Мэш Новости, которые вы заслужили', (select id from scrum_rss_channel where description ilike '%Mash|Мэш%' and is_parent), (select id from scrum_rss_category where code = 'NEWS')),
+            ('https://vk.com/toples_show', 'ТОПЛЕС Прокачай больной мозг!', (select id from scrum_rss_channel where description ilike '%ТОПЛЕС%' and is_parent), (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/cyberleninka', 'КиберЛенинка', (select id from scrum_rss_channel where description ilike '%КиберЛенинка%' and is_parent), (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/habr', 'Habr', (select id from scrum_rss_channel where description ilike '%Habr%' and is_parent), (select id from scrum_rss_category where code = 'ALL')),
+            ('https://vk.com/space_live', 'Открытый космос', (select id from scrum_rss_channel where description ilike '%Открытый космос%' and is_parent), (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/deep_space', 'Deep space', (select id from scrum_rss_channel where description ilike '%Deep space%' and is_parent), (select id from scrum_rss_category where code = 'EDU')),
+            ('https://vk.com/sci_one', 'Sci_one', (select id from scrum_rss_channel where description ilike '%Sci_one%' and is_parent), (select id from scrum_rss_category where code = 'EDU'));
         </sql>
     </changeSet>
 
