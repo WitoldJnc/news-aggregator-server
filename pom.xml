@@ -8,7 +8,7 @@
         <version>2.2.6.RELEASE</version>
         <relativePath/>
     </parent>
-    <groupId>com.news-aggregator</groupId>
+    <groupId>com.newsaggregator.web</groupId>
     <artifactId>news-aggregator</artifactId>
     <version>0.0.2-SNAPSHOT</version>
     <name>news-aggregator</name>
