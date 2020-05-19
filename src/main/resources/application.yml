@@ -1,5 +1,5 @@
 api:
- -key: ${API_KEY_FOR_V1}
+ -key: ${API_KEY_FOR_V1:2mejrqhkaqehihxju9q10zlerioxw3opdpliayaz}
 rss:
   api:
     -url: https://rss-2-json-api.herokuapp.com/api/v1/url?url=
@@ -10,14 +10,14 @@ spring:
     password: ${JDBC_DATABASE_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
   jpa:
-    show-sql: false
+    show-sql: ${DB_UPDATE:false}
     hibernate:
             ddl-auto: ${DDL_AUTO:none}
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   liquibase:
-    enabled: ${DB_UPDATE:true}
+    enabled: ${DB_UPDATE:false}
     change-log: classpath:db/changelog/db.changelog-master.xml
 
 vk:

@@ -1,6 +1,5 @@
 package com.newsaggregator.web.impl.v2.vk;
 
-
 import com.newsaggregator.web.dto.v2.rss.*;
 import com.newsaggregator.web.model.v2.RssChannel;
 import com.newsaggregator.web.service.v2.RssChannelRepoCustom;
@@ -8,6 +7,7 @@ import com.newsaggregator.web.service.v2.vk.VkTransferService;
 import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
+import com.vk.api.sdk.objects.wall.WallPost;
 import com.vk.api.sdk.objects.wall.WallPostFull;
 import com.vk.api.sdk.objects.wall.WallpostAttachmentType;
 import lombok.val;
@@ -30,7 +30,7 @@ public class VkTransferServiceImpl implements VkTransferService {
     private RssChannelRepoCustom channelRepoCustom;
 
     @Override
-    public Item createItem(WallPostFull item) {
+    public Item createItem(WallPost item) {
         Item rssItem = new Item();
 
         if (item.getAttachments() == null) {
@@ -65,25 +65,28 @@ public class VkTransferServiceImpl implements VkTransferService {
         });
 
         channel.setItems(items);
-//        channel.setFeed(extractChannelByResourceUrl(groupUrl));
-        channel.setFeed(new Feed("", "resource name", "descr", groupUrl, ""));
+        channel.setFeed(extractChannelByResourceUrl(groupUrl));
         return new Rss(channel);
     }
 
 
     @Override
     public Feed extractChannelByResourceUrl(String resourseUrl) {
-        RssChannel channel = channelRepoCustom.getResourseByUrl(resourseUrl);
-        return Feed.builder()
-                .language("ru")
-                .title(channel.getLinkToRss())
-                .description(channel.getDescription())
-                .link(resourseUrl)
-                .build();
+        try{
+            RssChannel channel = channelRepoCustom.getResourseByUrl(resourseUrl);
+            return Feed.builder()
+                    .language("ru")
+                    .title(channel.getLinkToRss())
+                    .description(channel.getDescription())
+                    .link(resourseUrl)
+                    .build();
+        } catch (Exception e) {
+            return new Feed();
+        }
     }
 
     @Override
-    public Item extractPhotoItem(WallPostFull item) {
+    public Item extractPhotoItem(WallPost item) {
         return Item.builder()
                 .guid(item.getId().toString())
                 .pubDate(new Date(item.getDate()).toString())
@@ -93,7 +96,7 @@ public class VkTransferServiceImpl implements VkTransferService {
     }
 
     @Override
-    public Item extractLinkItem(WallPostFull item) {
+    public Item extractLinkItem(WallPost item) {
         Link content = item.getAttachments().get(0).getLink();
         return Item.builder()
                 .guid(item.getId().toString())
@@ -106,7 +109,7 @@ public class VkTransferServiceImpl implements VkTransferService {
                 .build();
     }
 
-    private Item extractVideoItem(WallPostFull item) {
+    private Item extractVideoItem(WallPost item) {
         final Video video = item.getAttachments().get(0).getVideo();
         final String preview = Stream.of(video.getPhoto800(), video.getPhoto320(), video.getPhoto130())
                 .filter(Objects::nonNull)
@@ -118,12 +121,12 @@ public class VkTransferServiceImpl implements VkTransferService {
                 .title(video.getTitle())
                 .description(video.getDescription())
                 .enclosure(Stream.of(preview).collect(Collectors.toList()))
-                .link(getYouTubeUrl(video))
+                .link(getYouTubeUrl(video.getDescription()))
                 .build();
     }
 
     @Override
-    public List<String> getEnclosure(WallPostFull item) {
+    public List<String> getEnclosure(WallPost item) {
         List<String> enclosure = new ArrayList<>();
         item.getAttachments().stream()
                 .filter(x -> x.getType().equals(WallpostAttachmentType.PHOTO))
@@ -141,11 +144,11 @@ public class VkTransferServiceImpl implements VkTransferService {
     }
 
     @Override
-    public String getYouTubeUrl(Video video) {
+    public String getYouTubeUrl(String descr) {
         String link = "";
-        if (video.getDescription().contains("youtube") || video.getDescription().contains("youtu.be")) {
+        if (descr.contains("youtube.com/") || descr.contains("youtu.be/")) {
             Pattern regex = Pattern.compile("((http(s)?:\\/\\/)?)(www\\.)?((youtube\\.com\\/)|(youtu.be\\/))[\\S]+");
-            Matcher matcher = regex.matcher(video.getDescription());
+            Matcher matcher = regex.matcher(descr);
             if (matcher.find()) {
                 link = matcher.group();
             }
